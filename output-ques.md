@@ -43,3 +43,37 @@ fmt.Println(val)
 ```
 
 this will be 0
+
+---
+
+- this will:
+
+```
+funcs := []func(){}
+
+for i := 0; i < 3; i++ {
+    funcs = append(funcs, func() {
+        fmt.Println(i)
+    })
+}
+
+for _, f := range funcs {
+    f()
+}
+```
+
+give you 3,3,3
+
+but this:
+
+```
+for i := 0; i < 3; i++ {
+    defer fmt.Println(i)
+}
+```
+
+will be 2,1,0
+
+---
+
+- strings are immutable , rest almost everything is mutable
