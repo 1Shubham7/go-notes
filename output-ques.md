@@ -77,3 +77,22 @@ will be 2,1,0
 ---
 
 - strings are immutable , rest almost everything is mutable
+
+- Go is always pass by value. For slices, maps, and channels the value being copied is a pointer/header — so element modifications affect the original but reassignment doesn't.
+
+```
+func changeElement(s []int) {
+    s[0] = 99       // modifies underlying array → affects original
+}
+
+func appendSlice(s []int) {
+    s = append(s, 99)  // modifies copy of slice struct → does NOT affect original
+}
+
+s := []int{1, 2, 3}
+changeElement(s)
+fmt.Println(s)   // [99 2 3] — element changed ✅
+
+appendSlice(s)
+fmt.Println(s)   // [99 2 3] — append didn't affect original ❌
+```
