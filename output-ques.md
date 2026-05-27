@@ -96,3 +96,6 @@ fmt.Println(s)   // [99 2 3] — element changed ✅
 appendSlice(s)
 fmt.Println(s)   // [99 2 3] — append didn't affect original ❌
 ```
+
+Pass by Reference: Map, Slice, Channel, Pointer, Function/Closure, Interface
+Pass by Value: int, float, bool, string, Struct, Array
